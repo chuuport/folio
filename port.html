@@ -1,0 +1,449 @@
+      <!DOCTYPE html>
+      <html lang="en">
+
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Chuphen M Phom | Embedded Engineer</title>
+        <meta name="description" content="Portfolio of Chuphen M Phom - Embedded Systems & Electronics Engineer" />
+        <meta name="author" content="Chuphen M Phom" />
+
+        <!-- Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Anton&display=swap"
+          rel="stylesheet">
+
+        <style>
+          :root {
+            --glass-bg: rgba(0, 0, 0, 0.6);
+            --glass-blur: blur(12px);
+          }
+
+          * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            -webkit-tap-highlight-color: transparent;
+          }
+
+
+          body {
+            background-color: #11111138;
+            /* Slightly lighter than black */
+            color: #fff;
+            /* background-image: url('Background.jpg'); */
+            background-color: rgb(10, 10, 10);
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            background-size: cover;
+          }
+
+
+          h1,
+          h2,
+          h3,
+          p,
+          li,
+          a,
+          strong,
+          nav div {
+            /* text-shadow: 2px 2px 4px rgb(0, 0, 0); */
+            color: #fff;
+          }
+
+          nav {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            background-color: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid #222235;
+          }
+
+          .brand {
+            font-family: 'Anton', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            opacity: 70%;
+          }
+
+
+
+          .menu {
+            display: flex;
+            gap: 1.5rem;
+          }
+
+          nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+          }
+
+          nav a:hover {
+            color: #475c49;
+
+          }
+
+          .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+          }
+
+          .hamburger span {
+            height: 3px;
+            width: 25px;
+            background: white;
+            margin: 4px 0;
+            transition: 0.4s;
+          }
+
+          .mobile-menu {
+            display: none;
+            flex-direction: column;
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            position: absolute;
+            top: 60px;
+            right: 20px;
+            padding: 1rem;
+            border-radius: 12px;
+            z-index: 999;
+            transition: opacity 0.3s ease;
+            opacity: 0;
+            pointer-events: none;
+          }
+
+          .mobile-menu.active {
+            display: flex;
+            opacity: 1;
+            pointer-events: auto;
+          }
+
+          .mobile-menu a {
+            color: white;
+            padding: 0.5rem 0;
+            text-decoration: none;
+            font-weight: 600;
+          }
+
+          header,
+          .section {
+            padding: 4rem 2rem;
+            max-width: 1000px;
+            margin: auto;
+          }
+
+          .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding-top: 100px;
+            /* background: url('hero-bg.jpg') no-repeat center center;*/
+            background-color: rgb(10, 10, 10);
+            background-size: cover;
+            
+          }
+          
+
+          /*split hover chuphen m phome animation*/
+      
+          /*chuphen name animation end*/
+
+          .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+          }
+
+          .hero h3 {
+            font-size: 1.4rem;
+            opacity: 70%;
+            margin-bottom: 1.5rem;
+          }
+
+          .hero p {
+            max-width: 700px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            color: #ffffff;
+          }
+
+          .button {
+            background-color: #ddd;
+            color: #000;
+            padding: 0.8rem 1rem;
+            border: none;
+            border-radius: 30px;
+            font-weight: bold;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 8px 8px 16px rgba(0, 0, 0, 1);
+          }
+
+          .button:hover {
+            color: white;
+            background-color: black;
+            
+            /* shorthand: width + style + color */
+          }
+
+
+          .section h2 {
+            font-size: 2.2rem;
+            background: rgba(0, 0, 0, 0.4);
+            margin-bottom: 2rem;
+            border-left: 5px solid #fff;
+            padding-left: 1rem;
+          }
+
+          .section h2 {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            border-left: 5px solid #fff;
+            padding-left: 1rem;
+          }
+
+          .section h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            z-index: 1;
+            animation: wipe 2s ease 1s infinite alternate;
+          }
+
+          .section h2 span {
+            display: inline-block;
+            transform: translateX(-100%);
+            opacity: 0;
+            animation: slideIn 1s ease forwards;
+            animation-delay: 0.5s;
+            position: relative;
+            z-index: 2;
+          }
+
+          @keyframes slideIn {
+            to {
+              transform: translateX(0);
+              opacity: 1;
+            }
+          }
+
+          @keyframes wipe {
+            to {
+              width: 0%;
+            }
+          }
+
+
+          ul {
+            list-style: none;
+            padding: 0;
+          }
+
+          ul li {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+          }
+
+          a {
+            color: #ddd;
+          }
+
+          a:hover {
+            color: #fff;
+          }
+
+          footer {
+            text-align: center;
+            padding: 3rem 1rem;
+            background-color: rgba(0, 0, 0, 0.7);
+            font-size: 0.9rem;
+            color: #888;
+            border-top: 1px solid #555;
+            backdrop-filter: blur(8px);
+          }
+
+          @media (max-width: 768px) {
+            .menu {
+              display: none;
+            }
+
+            .hamburger {
+              display: flex;
+            }
+
+            .hero h1 {
+              font-size: 2.2rem;
+            }
+
+            .hero p {
+              font-size: 1rem;
+              padding: 0 1rem;
+            }
+          }
+        </style>
+      </head>
+
+      <body>
+
+        <nav>
+          <div class="brand">Chuphen M Phom</div>
+          <div class="menu">
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#education">Education</a>
+            <a href="#experience">Experience</a>
+            <a href="#certifications">Certifications</a>
+            <a href="#contact">Contact</a>
+          </div>
+          <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div class="mobile-menu" id="mobileMenu">
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#education">Education</a>
+            <a href="#experience">Experience</a>
+            <a href="#certifications">Certifications</a>
+            <a href="#contact">Contact</a>
+          </div>
+        </nav>
+
+        <section class="hero" id="about">
+          <h3>Electrical and Electronics Engineer</h3>
+          <div class="uniqueid">
+              <h1>Chuphen M Phom</h1>
+          </div>
+      
+
+
+          <p class="description">I'm passionate about building intelligent embedded systems and automation tools that solve real-world problems.
+            Currently diving into microcontrollers, IoT, and circuit design with Arduino and ESP32.</p>
+          <a href="#contact" class="button">Get in Touch</a>
+        </section>
+
+        <section class="section" id="skills">
+          <h2>Skills </h2>
+          <div class="card">
+            <ul>
+              <li>Embedded Systems Design</li>
+              <li>Circuit Simulation & PCB Design</li>
+              <li>Arduino, ESP32, and Raspberry Pi</li>
+              <li>Programming: C, C++, Python, MicroPython</li>
+              <li>IoT Systems & Sensor Integration</li>
+              <li>Version Control with Git & GitHub</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="section" id="projects">
+          <h2>Projects</h2>
+          <div class="card">
+            <h3>Smart Home Automation using ESP32</h3>
+            <p>Cloud-connected automation system for lights and appliances with mobile and voice control. Integrated adaptive
+              controls using motion, temperature, and light sensors.</p>
+          </div>
+          <div class="card">
+            <h3>IoT-Based Plant Monitoring System</h3>
+            <p>Low-cost sensor network with Arduino for soil moisture, temperature, and humidity tracking. Real-time
+              notifications and auto-watering via Blynk.</p>
+          </div>
+          <div class="card">
+            <h3>Wearable Heartbeat Monitor</h3>
+            <p>Portable heartbeat tracker using ESP32 and analog sensors. Data transmission to cloud dashboard with real-time
+              monitoring and OLED display.</p>
+          </div>
+        </section>
+
+        <section class="section" id="education">
+          <h2>Education</h2>
+          <div class="card">
+            <p><strong>B.Tech in Electrical and Electronics Engineering</strong><br>National Institute of Technology —
+              2021–2025</p>
+            <p>CGPA: 8.7/10</p>
+          </div>
+        </section>
+
+        <section class="section" id="experience">
+          <h2>Experience</h2>
+          <div class="card">
+            <p><strong>Embedded Systems Intern</strong> — TechInnovate Pvt. Ltd. (Jan 2024 – Jun 2024)</p>
+            <ul>
+              <li>Designed sensor-based automation systems for industrial clients.</li>
+              <li>Worked on real-time data collection and remote dashboards.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="section" id="certifications">
+          <h2>Certifications</h2>
+          <div class="card">
+            <ul>
+              <li>IoT Developer - Cisco Networking Academy</li>
+              <li>Embedded Systems - Coursera (University of Colorado)</li>
+              <li>Arduino Bootcamp - Udemy</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="section" id="contact">
+          <h2>Contact</h2>
+          <div class="card">
+            <p>Email: <a href="mailto:chuphenxyz@gmail.com">chuphenxyz@gmail.com</a></p>
+            <p>LinkedIn: <a href="https://linkedin.com/in/chuphenxyz" target="_blank">linkedin.com/in/chuphenxyz</a></p>
+            <p>GitHub: <a href="https://github.com/chuport" target="_blank">github.com/chuport</a></p>
+          </div>
+        </section>
+
+        <footer>
+          &copy; 2025 Chuphen M Phom. All rights reserved.
+        </footer>
+
+        <script>
+          const hamburger = document.querySelector('.hamburger');
+          const mobileMenu = document.getElementById('mobileMenu');
+
+          hamburger.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+          });
+
+          document.addEventListener('click', (e) => {
+            if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
+              mobileMenu.classList.remove('active');
+            }
+          });
+
+
+
+        </script>
+      </body>
+
+      </html>

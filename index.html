@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>3D Words Space</title>
+  <style>
+    body {
+      margin: 0;
+      background: black;
+      overflow: hidden;
+      font-family: sans-serif;
+      perspective: 1200px;
+    }
+
+    .scene {
+      width: 100vw;
+      height: 100vh;
+      position: relative;
+      transform-style: preserve-3d;
+    }
+
+    .word {
+      position: absolute;
+      font-size: 22px;
+      color: white;
+      white-space: nowrap;
+      transform-style: preserve-3d;
+      pointer-events: none;
+    }
+
+    .portfolio {
+      font-size: 50px;
+      color: #d6b7ff;
+      font-weight: bold;
+      text-shadow: 0 0 20px #8340ff;
+    }
+
+    #fade {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: #0a0a0a;
+      opacity: 0;
+      transition: opacity 1.2s ease;
+      z-index: 999;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="scene" id="scene"></div>
+  <div id="fade"></div>
+
+  <script>
+    const wordsList = [
+      "chu", "chu", "chu", "chu", "chu", "chu", "chu",
+      "chuphen m phom", "chuphen m phom", "chuphen m phom", "chuphen m phom", "chuphen m phom", "chuphen m phom", "chuphen m phom",
+      "Arduino", "PCB", "Circuit", "Transistor", "Sensor",
+      "Resistor", "Actuator", "Voltage", "Microcontroller", "Gear",
+      "Thermodynamics", "CAD", "SolidWorks", "Mechanism", "Stepper Motor",
+      "IoT", "3D Print", "Load", "Current", "Wiring"
+    ];
+
+    const scene = document.getElementById('scene');
+    const wordElements = [];
+    const totalWords = 100;
+    const centerZ = 2000;
+
+    function createWord(text, x, y, z, isPortfolio = false) {
+      const el = document.createElement('div');
+      el.className = 'word';
+      if (isPortfolio) el.classList.add('portfolio');
+      el.innerText = text;
+      scene.appendChild(el);
+      return { el, x, y, z, isPortfolio };
+    }
+
+    function randomXYZ(range) {
+      return (Math.random() - 0.5) * 2 * range;
+    }
+
+    for (let i = 0; i < totalWords; i++) {
+      const x = randomXYZ(800);
+      const y = randomXYZ(600);
+      const z = Math.random() * centerZ;
+      const word = wordsList[Math.floor(Math.random() * wordsList.length)];
+      wordElements.push(createWord(word, x, y, z));
+    }
+
+    const portfolio = createWord("portfolio", 0, 0, centerZ, true);
+    wordElements.push(portfolio);
+
+    let hasFaded = false;
+
+    function animate() {
+      wordElements.forEach(obj => {
+        obj.z -= 10;
+
+        if (obj.isPortfolio && obj.z < 10 && !hasFaded) {
+          hasFaded = true;
+          const fade = document.getElementById("fade");
+          fade.style.opacity = 1;
+          setTimeout(() => {
+            window.location.href = "port.html";
+          }, 1500);
+        }
+
+        if (obj.z < 1 && !obj.isPortfolio) {
+          obj.x = randomXYZ(800);
+          obj.y = randomXYZ(600);
+          obj.z = centerZ;
+          obj.el.innerText = wordsList[Math.floor(Math.random() * wordsList.length)];
+        }
+
+        const scale = Math.max(0.3, 1000 / (obj.z + 500));
+        obj.el.style.transform = `
+          translate3d(
+            ${window.innerWidth / 2 + obj.x}px,
+            ${window.innerHeight / 2 + obj.y}px,
+            ${-obj.z}px
+          )
+          scale(${scale})`;
+      });
+
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+  </script>
+</body>
+</html>
